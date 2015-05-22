@@ -6,7 +6,7 @@ class CreateCountries < ActiveRecord::Migration
       t.string :continent_name
       t.string :continent_code
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end
