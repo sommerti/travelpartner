@@ -1,0 +1,42 @@
+<% if controller.class == WelcomeController && controller.action_name == 'index' %>
+    <nav class="navbar landing-page-menu">
+<% else %>
+    <nav class="navbar navbar-inverse">
+<% end %>
+
+  <div class="container-fluid narrower-nav-top">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button id="nav-toggle-button-1" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-menu-hamburger" style="color:#D3D3D3; font-size:1.2em;"></span>
+      </button>
+      <%= link_to ("<i class='fa fa-university fa-lg'></i> MyTripLibrary").html_safe, root_path, class: "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      
+      <ul class="nav navbar-nav">
+        
+        <!-- display roll-over highlight if current page -->
+        <li class=
+          <% if controller.class == Devise::RegistrationsController && controller.action_name == 'new' %>
+            "active"
+          <% end %>
+        >
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        </li>
+
+
+      </ul>
+
+      <p class="navbar-text navbar-right">
+        <%= link_to 'Sign In', new_user_session_path, class: "navbar-link" %> 
+      </p>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

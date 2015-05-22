@@ -1,0 +1,50 @@
+<% if controller.class == WelcomeController && controller.action_name == 'index' %>
+    <nav class="navbar landing-page-menu">
+<% else %>
+    <nav class="navbar navbar-inverse">
+<% end %>
+
+  <div class="container-fluid narrower-nav-top">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button id="nav-toggle-button-1" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon glyphicon-menu-hamburger" style="color:#D3D3D3; font-size:1.2em;"></span>
+      </button>
+      <%= link_to ("<i class='fa fa-calendar fa-lg'></i> MyTripLibrary").html_safe, root_path, class: "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+      
+      <ul class="nav navbar-nav">
+        
+        <!-- display roll-over highlight if current page -->
+        <li class=
+          <% if controller.class == CountriesController && controller.action_name == 'index' %>
+            "active"
+          <% end %>
+        >
+          <%= link_to 'All', root_path%>
+        </li>
+  
+
+      </ul>
+
+
+  
+      <p class="navbar-text navbar-right">
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "navbar-link" %>
+      </p>
+        
+      <!-- display user info -->  
+      <% if !current_user.firstname.nil? %>
+        <p class="navbar-text navbar-right signed-in-as-link">Signed in as <%= link_to truncate("#{current_user.firstname} #{current_user.lastname}", length: 30), current_user %></p>
+      <% elsif !current_user.email.nil? %>
+        <p class="navbar-text navbar-right signed-in-as-link">Signed in as <%= link_to truncate(current_user.email, length: 30), current_user %></p>
+      <% end %>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

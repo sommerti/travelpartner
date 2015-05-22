@@ -1,0 +1,29 @@
+<% if controller.class == WelcomeController && controller.action_name == 'index' %>
+  <nav class="navbar navbar-fixed-bottom landing-page-menu-bottom">
+<% else %>    
+  <nav class="navbar navbar-inverse navbar-fixed-bottom">
+<% end %>
+
+    <div class="container-navbar-bottom ">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="glyphicon glyphicon-triangle-top" style="color:#D3D3D3"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse-2">
+      <p class="navbar-text navbar-left">www.MyTripLibrary.com All rights reserved.</p>
+
+    	<ul class="nav navbar-nav navbar-right">
+    		<li><%= link_to'About' %></li>
+    		<li><%= link_to 'Privacy Policy' %></li>
+    		<li><%= link_to 'Legal Disclaimer' %></li>
+    		<li><%= link_to 'Help/FAQ' %></li>
+    		<li><%= link_to 'Contact' %></li>
+    	</ul>
+      </div> 
+
+    </div>
+  </nav>
