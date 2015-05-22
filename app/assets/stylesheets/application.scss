@@ -1,0 +1,397 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+// basic elements
+body{
+	// font-family: 'Droid Serif', serif;
+	// font-family: 'Noto Serif', serif;
+	// font-family: 'PT Serif', serif;
+	font-family: 'PT Sans', sans-serif;
+	background-color: #F5F5F5;
+}
+h1, h2, h3, h4{
+	font-weight: 700;
+	color: #333;
+}
+h1{
+	margin-bottom: 20px;
+}
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+ 
+.clearfix:after {
+  clear: both;
+}
+ 
+.clearfix {
+  zoom: 1; /* ie 6/7 */
+}
+.inline{
+	display: inline-block;
+}
+
+
+
+// general
+#notice{
+	h2{
+		font-size: 1.2em;
+	}
+
+	color: #468847;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+#alert{
+	h2{
+		font-size: 1.2em;
+	}
+
+	color: #b94a48;
+	background-color: #f2dede;
+	border-color: #eed3d7;
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.navbar-brand{
+	font-weight: 700;
+	font-size: 1.2em;
+	
+}
+.signed-in-as-link{
+	a{
+		color: #468847;
+	}
+}
+.profile-table{
+	td{
+		padding: 5px 10px 5px 0;
+	}
+}
+#map{
+	border-radius: 5px;
+	width: 100%;
+	height: 350px;
+	margin: 0 0 0 0;
+}
+
+
+
+
+
+
+
+// landing page
+.landing-page-menu{
+	color: #F5F5F5;
+	opacity: 0.8;
+	
+	a{
+		color: #F5F5F5;
+		opacity: 0.8;
+	}
+
+	li > a:hover {
+   		background-color: #011627;
+    	border-radius: 5px;
+	}
+
+	.open .dropdown-toggle {
+		background: #011627 !important; 
+		border-radius: 5px;
+	}
+
+	.dropdown-menu > li > a:hover {
+		background-color: #F5F5F5;
+	}
+}
+.landing-page-menu-bottom{
+	color: #F5F5F5;
+	opacity: 0.8;
+	
+	a{
+		color: #F5F5F5;
+		opacity: 0.8;
+	}
+
+	li > a:hover {
+   		background-color: transparent;
+   		color: #011627;
+	}
+}
+#bg {
+	position: fixed; 
+	top: -50%; 
+	left: -50%; 
+	width: 200%; 
+	height: 200%;
+	z-index: -20;
+
+}
+#bg img {
+
+	transform:scale(1.1,1.1);
+	transform-origin: 10%;
+
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0; 
+	margin: auto; 
+	min-width: 50%;
+	min-height: 50%;
+
+	-webkit-filter: blur(8px) grayscale(20%);
+	-moz-filter: blur(8px) grayscale(20%);
+	-o-filter: blur(8px) grayscale(20%);
+	-ms-filter: blur(8px) grayscale(20%);
+	filter: blur(8px) grayscale(20%);
+}
+#darken{
+	position: fixed; 
+	top: -50%; 
+	left: -50%; 
+	width: 200%; 
+	height: 200%;
+
+	background-color: black;
+	opacity: 0.2;
+	z-index: -10;
+}
+.container-headline{
+	width: 90%;
+	color: white;
+	h1{
+		//font-family: 'PT Serif', serif;
+		font-size: 4em;
+		color: #FFFAFA;
+		margin-top: 8%;
+	}
+	p{
+		font-family: 'PT Serif', serif;
+		font-size: 2.5em;
+		font-weight: 700;
+		letter-spacing: -1px;
+		color: #FFFAFA;
+		margin-top: 30px;
+
+	}
+	.btn-cta{
+		margin-top: 30px;
+		font-size: 1.5em;
+		font-weight: 700;
+	}
+}
+
+
+
+
+
+// containers
+.container{
+	width: 80%;
+	margin-bottom: 80px;
+}
+
+// modifying .container-fluid of top navigation
+.narrower-nav-top{
+	width: 80%;
+}
+
+.container-navbar-bottom{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.container-devise{
+	width: 50%;
+}
+.container-edit{
+	width: 50%;
+	margin-bottom: 50px;
+}
+.container-two-columns{
+	-webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+
+   	-webkit-column-gap: 20px;
+    -moz-column-gap: 20px;
+    column-gap: 20px;
+}
+
+
+
+
+
+
+// panels
+.panel{
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    0px 1px 1px 0px rgba(50, 50, 50, 0.3);
+	box-shadow:         0px 1px 1px 0px rgba(50, 50, 50, 0.3);
+}
+.panel-heading{
+	padding-top:20px;
+	border-color: #F5F5F5;
+	h3{
+		font-size: 1.2em;
+	}
+}
+.panel-body{
+	padding-bottom: 20px;
+}
+
+.panel-map{
+	margin: 0;
+	padding: 0;	
+}
+.panel-search{
+	padding: 20px;
+}
+
+
+
+
+
+// narrower screens
+@media screen and (max-width: 1024px) {
+	.container-headline{
+		font-size: 0.8em;
+	}
+	.container-devise{
+		width: 70%;
+	}
+	.container-edit{
+		width: 70%;
+	}
+}
+@media screen and (max-width: 768px) {
+	.panel-experience{
+		display: inline-block;
+		width: 99%;
+	}
+	.container-headline{
+		font-size: 0.5em;
+	}
+	.container-devise{
+		width: 100%;
+	}
+	.container-edit{
+		width: 100%;
+	}
+	.navbar-fixed-bottom{
+		visibility: hidden;
+	}
+}
+// show toggle button menu below 800px
+@media screen and (max-width: 1000px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+		margin-top: 7.5px;
+	}
+	.navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+  		display:block !important;
+	}
+}
+
+
+// avatar
+.avatar-main{
+		img{
+			width: 50px;
+			border-radius: 100%;
+		}
+}
+.avatar-comment{
+		img{
+			width: 50px;
+			border-radius: 100%;
+		}
+		float: left;
+		clear: left;
+		margin: 4px 15px 0 0px;
+		text-align: center;
+}
+
+.avatar-profile{
+		img{
+			width: 120px;
+			border-radius: 5px;
+			margin: 10px 0 10px 0;
+		}
+}
+.avatar-group{
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	padding-right: 3px;
+	
+	.image-group{
+		display: block;
+
+	}
+	.name-group{
+		font-size: 0.75em;
+		font-weight: 700;
+		margin-top: 2px;
+		display: block;
+
+	}
+}
+
+
