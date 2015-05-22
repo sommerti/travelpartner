@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.3.4.1'
 gem 'simple_form', '~> 3.1.0'
 gem 'devise', '~> 3.4.1'
 gem 'cancancan', '~> 1.10.1'
+gem 'koala', '~> 2.0.0'
 gem 'pg_search', '~> 0.7.9'
 gem 'gmaps4rails', '~> 2.1.2'
 gem 'underscore-rails', '~> 1.8.2'
@@ -21,8 +22,6 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'paperclip', '~> 4.2.1'
 gem 'rmagick', '~> 2.15.0'
 
-gem 'seed-fu', '~> 2.3.5'
-gem 'faker', '~> 1.4.3'
 gem 'figaro', '~> 1.1.0'
 gem 'rails_12factor', group: :production
 
@@ -34,6 +33,8 @@ gem 'spring'
 gem 'annotate', '~> 2.6.8'
 gem 'better_errors', '~> 2.1.1'
 gem 'rack-mini-profiler', '~> 0.9.3'
+gem 'seed-fu', '~> 2.3.5'
+gem 'faker', '~> 1.4.3'
 
 end
 
