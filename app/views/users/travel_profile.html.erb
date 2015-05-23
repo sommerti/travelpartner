@@ -31,8 +31,8 @@
 
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map_countries'}}, function(){
-	<% if !@hash_map_countries.blank? %>
-		markers = handler.addMarkers(<%= @hash_map_countries.to_json.html_safe %>);
+	<% if !@hash_country_travel_records.blank? %>
+		markers = handler.addMarkers(<%= @hash_country_travel_records.to_json.html_safe %>);
 		// to center on a marker
 		handler.map.centerOn(markers[0]); 
 		// to set the map zoom

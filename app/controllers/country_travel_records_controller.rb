@@ -2,71 +2,45 @@ class CountryTravelRecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_country
   before_action :set_user
+  before_action :set_travel_status
 
-  def create
-    # a user might try to add the same country again 
+  def create_update
+    # user might want to update a record or try to add the same country again 
     # so start by searching for an existing country travel record matching the user and the country
     country_travel_record_id = @user.find_country_travel_record(@country)
 
     # if such a record does not yet exist, create new record
     if country_travel_record_id.nil?
+
       @country_travel_record = CountryTravelRecord.new
       @country_travel_record.user_id = @user.id
       @country_travel_record.country_id = @country.id
-      
-
-      # a user might tamper with travel status input        
-      # if a user tries to set travel_status to anything other than "wannavisit" or "havebeen", set it to "wannavisit"
-      if country_travel_record_params[:travel_status] == "wannavisit" or country_travel_record_params[:travel_status] == "havebeen"
-        @country_travel_record.travel_status = country_travel_record_params[:travel_status]
-      else 
-        @country_travel_record.travel_status = "wannavisit"
-      end
-
+      @country_travel_record.travel_status = @travel_status
 
       if @country_travel_record.save 
-        if @country_travel_record.travel_status == "wannavisit"
-          flash[:notice] = "You've marked #{@country.country_name} as 'wanna visit'."
-        end
-        if @country_travel_record.travel_status == "havebeen"
-          flash[:notice] = "You've marked #{@country.country_name} as 'have been'."
-        end
+        flash[:notice] = "You've marked #{@country.country_name} as 'wanna visit'." if @travel_status == "wannavisit"
+        flash[:notice] = "You've marked #{@country.country_name} as 'have been'." if @travel_status == "havebeen"
       else
         flash[:alert] = "Country not added."
       end
 
-
-    # if sucha record is found, update the record
+    # if such a record is found, update the record
     else
+
       @country_travel_record = CountryTravelRecord.find(country_travel_record_id)
-      
-
-      # a user might tamper with travel status input        
-      # if a user tries to set travel_status to anything other than "wannavisit" or "havebeen", set it to "wannavisit"
-      if country_travel_record_params[:travel_status] == "wannavisit" or country_travel_record_params[:travel_status] == "havebeen"
-        @country_travel_record.travel_status = country_travel_record_params[:travel_status]
-      else 
-        @country_travel_record.travel_status = "wannavisit"
-      end
-
+      @country_travel_record.travel_status = @travel_status
 
       if @country_travel_record.save 
-        if @country_travel_record.travel_status == "wannavisit"
-          flash[:notice] = "You've updated your travel record for #{@country.country_name} as 'wanna visit'."
-        end
-        if @country_travel_record.travel_status == "havebeen"
-          flash[:notice] = "You've updated your travel record for #{@country.country_name} as 'have been'."
-        end
+        flash[:notice] = "You've updated #{@country.country_name} as 'wanna visit'." if @travel_status == "wannavisit"
+        flash[:notice] = "You've updated #{@country.country_name} as 'have been'." if @travel_status == "havebeen"
       else
-        flash[:alert] = "Country not updated."
+        flash[:alert] = "Country not added."
       end
+
     end
 
     redirect_to travel_profile_user_path(@user)
 
-  end
-
-  def update
   end
 
   def destroy
@@ -84,6 +58,15 @@ class CountryTravelRecordsController < ApplicationController
 
   def set_user   
     @user = User.friendly.find(params[:id])
+  end
+
+  def set_travel_status
+    @travel_status = params[:travel_status]
+    # a user might tamper with travel status input        
+    # if a user tries to set travel_status to anything other than "wannavisit" or "havebeen", set it to "wannavisit"
+    if !(@travel_status == "wannavisit" or @travel_status == "havebeen")
+      @travel_status == "wannavisit"
+    end
   end
 
 end

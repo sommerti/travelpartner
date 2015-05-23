@@ -1,1 +1,4 @@
-<p><%= record.country.country_name if record.travel_status == "havebeen" %></p>
+<p>
+	<%= record.country.country_name %>
+	<%= link_to 'Wanna Visit', create_update_country_travel_record_user_path(country_id: record.country_id, travel_status: "wannavisit"), class: "btn btn-success btn-xs", method: :post %>
+</p>

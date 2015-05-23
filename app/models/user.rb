@@ -82,4 +82,12 @@ class User < ActiveRecord::Base
 	    end	
 	end
 
+	def country_travel_records_wannavisit
+		CountryTravelRecord.where(user_id: self.id, travel_status: "wannavisit")
+	end
+
+	def country_travel_records_havebeen
+		CountryTravelRecord.where(user_id: self.id, travel_status: "havebeen")
+	end
+
 end

@@ -1,5 +1,6 @@
 <p>
 	<%= country.country_name %> 
-	<%= link_to 'Wanna Visit', create_country_travel_record_user_path(country_id: country.id, travel_status: "wannavisit"), class: "btn btn-success btn-xs", method: :post %>
-	<%= link_to 'Have Been', create_country_travel_record_user_path(country_id: country.id, travel_status: "havebeen"), class: "btn btn-warning btn-xs", method: :post %>
+	<%= link_to 'More Info', create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-info btn-xs", method: :post %>
+	<%= link_to 'Wanna Visit', create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-success btn-xs", method: :post %>
+	<%= link_to 'Have Been', create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), class: "btn btn-warning btn-xs", method: :post %>
 </p>

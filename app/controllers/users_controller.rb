@@ -35,6 +35,29 @@ class UsersController < ApplicationController
     @countries_in_africa = Country.in_africa
     @countries_in_oceania = Country.in_oceania
     @countries_in_antarctica = Country.in_antarctica
+
+    @hash_country_travel_records = Gmaps4rails.build_markers(@user.country_travel_records) do |record, marker|
+      marker.lat record.country.latitude
+      marker.lng record.country.longitude
+
+      if record.travel_status == "wannavisit"
+        marker.picture({
+          url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|007FFF|000000",
+          width: 32,
+          height: 32
+        })
+      else
+        marker.picture({       
+          url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
+          width: 32,
+          height: 32
+        })
+      end
+      
+      marker.infowindow "<div style='width:200px;height:100%;'>#{country.name}</div>"
+    end
+
+
   end
 
 
