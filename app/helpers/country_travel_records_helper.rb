@@ -1,0 +1,2 @@
+module CountryTravelRecordsHelper
+end
