@@ -18,7 +18,17 @@
 #  firstname              :string
 #  lastname               :string
 #  about                  :text
+#  country                :string
+#  city                   :string
+#  age                    :integer
+#  gender                 :string
+#  role                   :string
 #  slug                   :string
+#  avatar_file_name       :string
+#  avatar_content_type    :string
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  delete_avatar          :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
