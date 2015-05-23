@@ -1,6 +1,30 @@
 <p>
 	<%= country.country_name %> 
-	<%= link_to 'More Info', create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-info btn-xs", method: :post %>
+	
+	<button id="wiki_<%= country.id %>" class="btn btn-info btn-xs">More Info</button>
 	<%= link_to 'Wanna Visit', create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-success btn-xs", method: :post %>
 	<%= link_to 'Have Been', create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), class: "btn btn-warning btn-xs", method: :post %>
 </p>
+
+
+
+
+
+
+<!-- modal script -->
+<script>
+
+$('#wiki_<%= country.id %>').click(function(){
+
+	$('.modal').on('shown.bs.modal',function(){
+	  $(this).find('iframe').attr('src',"/wiki/?country_id=<%= country.id %>")
+	})
+
+    $('.modal').modal({show:true})
+    
+    $('iframe').load(function() {
+    $('.loading').hide();
+});
+    
+})
+</script>

@@ -22,6 +22,7 @@ gem 'font-awesome-rails', '~> 4.3.0.0'
 gem 'friendly_id', '~> 5.1.0'
 gem 'paperclip', '~> 4.2.1'
 gem 'rmagick', '~> 2.15.0'
+gem 'httparty', '~> 0.13.4'
 
 gem 'figaro', '~> 1.1.0'
 gem 'rails_12factor', group: :production

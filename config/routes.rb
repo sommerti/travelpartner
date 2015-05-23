@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
 	# standalone routes
 	get "how-it-works", to: "welcome#how_it_works"
+	get "wiki", to: "welcome#wiki"
 
 	# model routes
 	get "countries", to: "countries#index"
