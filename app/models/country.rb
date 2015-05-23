@@ -12,4 +12,13 @@
 #
 
 class Country < ActiveRecord::Base
+	has_many :country_travel_records
+
+	scope :in_asia, -> { where(continent_name: "Asia") }
+	scope :in_europe, -> { where(continent_name: "Europe") }
+	scope :in_northamerica, -> { where(continent_name: "North America") }
+	scope :in_southamerica, -> { where(continent_name: "South America") }
+	scope :in_africa, -> { where(continent_name: "Africa") }
+	scope :in_oceania, -> { where(continent_name: "Oceania") }
+	scope :in_antarctica, -> { where(continent_name: "Antarctica") }
 end

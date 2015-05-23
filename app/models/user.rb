@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	     :recoverable, :rememberable, :trackable, :validatable
 
+	has_many :country_travel_records
+
   	# gem paperclip	     
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, 
 								default_url: ":style/default.gif"
@@ -54,6 +56,30 @@ class User < ActiveRecord::Base
 	end
 
    	def fullname
- 		"#{self.firstname} #{self.lastname}"
+   		if self.firstname.blank? and self.lastname.blank?
+   			""
+   		elsif self.firstname.blank?
+   			"#{self.lastname}"
+   		elsif self.lastname.blank?
+   			"#{self.firstname}"
+   		else
+ 			"#{self.firstname} #{self.lastname}"
+ 		end
  	end
+
+
+	def find_country_travel_record(country)
+		self.country_travel_records.each do |record|
+	  		if record.country_id == country.id
+	  			@is_found = true;
+	  			@country_travel_record_id = record.id
+	    	end
+	    end
+	    if @is_found
+	    	@country_travel_record_id
+	    else
+	    	nil
+	    end	
+	end
+
 end

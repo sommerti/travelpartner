@@ -1,0 +1,29 @@
+<div role="tabpanel">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation"class="active"><a href="#wannavisit" aria-controls="wannavisit" role="tab" data-toggle="tab">Countries I Wanna Visit</a></li>    
+    <li role="presentation"><a href="#havebeen" aria-controls="havebeen" role="tab" data-toggle="tab">Countries I've Been To</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane fade in active" id="wannavisit">
+      <div class="container-country-travel-record-tab">
+        <% @user.country_travel_records.each do |record| %>
+          <%= render partial: "countries_wannavisit", locals: { record: record }  %>
+        <% end %>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="havebeen">
+      <div class="container-country-travel-record-tab">
+        <% @user.country_travel_records.each do |record| %>
+          <%= render partial: "countries_havebeen", locals: { record: record }  %>
+        <% end %>
+      </div>
+    </div>
+      
+  </div>
+
+</div>

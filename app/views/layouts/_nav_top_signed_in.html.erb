@@ -32,9 +32,9 @@
       </p>
         
       <!-- display user info -->  
-      <% if !current_user.firstname.nil? %>
-        <p class="navbar-text navbar-right signed-in-as-link">Signed in as <%= link_to truncate("#{current_user.firstname} #{current_user.lastname}", length: 30), current_user %></p>
-      <% elsif !current_user.email.nil? %>
+      <% if !current_user.fullname.blank? %>
+        <p class="navbar-text navbar-right signed-in-as-link">Signed in as <%= link_to truncate("#{current_user.fullname}", length: 30), current_user %></p>
+      <% elsif !current_user.email.blank? %>
         <p class="navbar-text navbar-right signed-in-as-link">Signed in as <%= link_to truncate(current_user.email, length: 30), current_user %></p>
       <% end %>
 

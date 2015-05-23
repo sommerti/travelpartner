@@ -1,0 +1,51 @@
+<h1><%= @user.fullname.blank? ? "" : "#{@user.fullname}'s " %>Travel Profile</h1>
+
+<div class="row">
+	<div class="col-md-7">	
+		<!-- panel showing countries grouped by continents -->
+		<div class="panel panel-success panel-countries">
+			<h4>Select countries that you wanna visit or have already been to:</h4>
+			<%= render "continent_tabs" %>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="panel panel-default panel-travel-map-and-list">
+			<!-- google map -->
+			<div id="map_countries"></div>
+			<div class="container-country-travel-lists"><%= render "travel_list_tabs" %></div>
+		</div>
+	</div>
+
+	<div class="col-md-1">
+		
+		friend's list
+
+	</div>
+
+</div>
+
+
+<!-- google map script -->
+<script>
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map_countries'}}, function(){
+	<% if !@hash_map_countries.blank? %>
+		markers = handler.addMarkers(<%= @hash_map_countries.to_json.html_safe %>);
+		// to center on a marker
+		handler.map.centerOn(markers[0]); 
+		// to set the map zoom
+		handler.getMap().setZoom(4);
+		handler.bounds.extendWith(markers);
+		handler.fitMapToBounds();
+	<% else %>
+		handler.getMap().setZoom(2);
+	<% end %>
+});
+
+</script>
+
+
+
+

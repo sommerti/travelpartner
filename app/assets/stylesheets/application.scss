@@ -47,6 +47,11 @@ h1{
 .inline{
 	display: inline-block;
 }
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus{
+    // background-color: #F5F5F5;  
+} 
 
 
 
@@ -90,10 +95,10 @@ h1{
 		padding: 5px 10px 5px 0;
 	}
 }
-#map{
+#map_countries{
 	border-radius: 5px;
 	width: 100%;
-	height: 350px;
+	height: 250px;
 	margin: 0 0 0 0;
 }
 
@@ -212,17 +217,17 @@ h1{
 
 // containers
 .container{
-	width: 80%;
+	width: 95%;
 	margin-bottom: 80px;
 }
 
 // .container-fluid modification
 .narrower-nav-top{
-	width: 80%;
+	width: 95%;
 }
 
 .container-navbar-bottom{
-	width: 80%;
+	width: 95%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -233,8 +238,10 @@ h1{
 	width: 50%;
 	margin-bottom: 50px;
 }
-.container-two-columns{
-	-webkit-column-count: 2;
+.container-country-tab{
+	margin: 10px;
+
+	-webkit-column-count: 3;
     -moz-column-count: 2;
     column-count: 2;
 
@@ -242,8 +249,12 @@ h1{
     -moz-column-gap: 20px;
     column-gap: 20px;
 }
-
-
+.container-country-travel-lists{
+	padding: 20px;
+}
+.container-country-travel-record-tab{
+	margin: 10px;
+}
 
 
 
@@ -273,7 +284,19 @@ h1{
 .panel-search{
 	padding: 20px;
 }
+.panel-countries{
+	padding: 20px;
 
+	// height: 500px;
+	// width: 100%;
+	// overflow-y: scroll;
+
+}
+
+.panel-map-and-list{
+	padding: 0;
+
+}
 
 
 

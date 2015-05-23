@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 	get "countries", to: "countries#index"
 
 	devise_for :users
-	resources :users
+	resources :users do
+		member do
+			get "travel_profile"
+			post "create_country_travel_record", to: "country_travel_records#create"
+		end
+	end
 
 	resources :country_travel_records
 
