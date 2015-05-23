@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/alibabajan/country_select.git
+  revision: 2c56b876740647a9d3493eea2a1a635474ce3b20
+  specs:
+    country_select (2.1.0)
+      countries (~> 0.9, >= 0.9.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,6 +78,10 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    countries (0.11.4)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.7.0)
+    currencies (0.4.2)
     debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -95,6 +106,7 @@ GEM
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
     i18n (0.7.0)
+    i18n_data (0.7.0)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -220,6 +232,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 1.10.1)
   coffee-rails (~> 4.1.0)
+  country_select!
   devise (~> 3.4.1)
   faker (~> 1.4.3)
   figaro (~> 1.1.0)

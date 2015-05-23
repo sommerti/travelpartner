@@ -1,0 +1,12 @@
+<%= simple_form_for @user do |f| %>
+	<%= f.input :firstname %>
+	<%= f.input :lastname %>
+	<%= f.input :country %>
+	<%= f.input :city %>
+	<%= f.input :age %>
+	<%= f.input :gender, collection: ['Male', 'Female'], prompt: "Select"  %>
+	<%= f.input :avatar, as: :file %>
+	<%= f.input :delete_avatar, as: :boolean, checked_value: true, unchecked_value: false, label: "Delete exisitng avatar?", input_html: { checked: false } %>	
+	<%= f.input :about, label: 'About me' %>
+	<%= f.button :submit, class: "btn btn-warning" %>
+<% end %>

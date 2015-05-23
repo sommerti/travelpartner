@@ -27,6 +27,21 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	     :recoverable, :rememberable, :trackable, :validatable
 
+  	# gem paperclip	     
+	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, 
+								default_url: ":style/default.gif"
+	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+  	# gem friendly_id
+	extend FriendlyId
+	friendly_id :slug_candidates, use: :slugged
+	def slug_candidates
+	[
+	  [:firstname, :lastname],
+	  [:firstname, :lastname, :country],
+	  [:firstname, :lastname, :country, :city],
+	]
+	end
 
    	def fullname
  		"#{self.firstname} #{self.lastname}"

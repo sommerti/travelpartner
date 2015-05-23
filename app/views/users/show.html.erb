@@ -1,3 +1,67 @@
-<h1>Profile</h1>
-<p><%= current_user.email %></p>
-<p><%= current_user.fullname %></p>
+<%if @user == current_user %>
+	<h1>
+    My Profile
+    <%= link_to 'Edit Profile', edit_user_path, class: "btn btn-warning btn-sm" %>
+  </h1>
+<% else %>
+  <% if @user.firstname.blank? and @user.lastname.blank? %>
+	  <h1>User Profile</h1>
+  <% else %>
+    <h1><%= @user.fullname %>'s Profile</h1>
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-2">
+
+    <div class="avatar-profile"><%= image_tag @user.avatar.url(:medium) %></div>
+
+  </div>
+
+  <div class="col-md-10">
+    <table class="profile-table">
+      <tr>
+        <td><strong>Login email:</strong></td> 
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>      
+          <% if @user == current_user %>
+            <%= link_to ("Edit Login <span class='glyphicon glyphicon-edit'></span>").html_safe, edit_user_registration_path, class: "btn btn-warning btn-xs" %>
+          <% end %>
+        </td>
+      </tr>
+      <tr><td>&nbsp;</td><td></td></tr>
+      <tr>
+        <td><strong>First name:</strong></td>
+        <td><%= @user.firstname %></td>
+      </tr>
+      <tr>
+        <td><strong>Last name:</strong></td>
+        <td><%= @user.lastname %></td>
+      </tr>
+      <tr>
+        <td><strong>Country:</strong></td>
+        <td><%= @user.country %></td>
+      </tr>
+      <tr>
+        <td><strong>City:</strong> </td>
+        <td<%= @user.city %>></td>
+      </tr>
+      <tr>
+        <td><strong>Gender:</strong></td>
+        <td><%= @user.gender %></td>
+      </tr>
+      <tr>
+        <td><strong>Age:</strong></td>
+        <td><%= @user.age %></td>
+      </tr>
+      <tr>
+        <td><strong>About me:</strong></td>
+        <td><%= @user.about %></td>
+      </tr>
+    </table>    
+  </div>
+
+</div>

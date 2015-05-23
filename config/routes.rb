@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	authenticated :user do
-	root to: "welcome#how_it_works", as: :authenticated_root
+		root to: "welcome#how_it_works", as: :authenticated_root
 	end
 	#root to: "welcome#index"
 	root to: "countries#index"
@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
 	devise_for :users
 	resources :users
-
 
 
 end
