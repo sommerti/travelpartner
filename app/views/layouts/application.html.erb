@@ -15,12 +15,20 @@
 <body role="document">
 	
 	<!-- nav top -->
-	<% user_signed_in? ? render "layouts/nav_top_signed_in" : render "layouts/nav_top_not_signed_in" %> 
+	<% if user_signed_in? %>
+		<%= render "layouts/nav_top_signed_in" %> 
+	<% else %>
+		<%= render "layouts/nav_top_not_signed_in" %> 
+	<% end %>
 
 	<div class="container" role="main">
+		<% if !notice.nil? %>
+			<p id="notice"><%= notice %></p>
+		<% elsif !alert.nil? %>
+			<p id="alert"><%= alert %></p>
+		<% end %>
 		
 		<%= yield %>
-
 	</div><!-- /main -->
 
 	<!-- nav bottom -->
