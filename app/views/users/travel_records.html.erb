@@ -31,7 +31,9 @@
 
 	<div class="col-md-1 smaller-gutter">
 		<div class="panel panel-friend-avatars">
-			<%= render "users/friend_avatar" %>
+			<% current_user.all_following.each do |following| %>
+				<%= render partial: "users/friend_avatar", locals: { user: following }  %>
+			<% end %>
 		</div>
 	</div>
 

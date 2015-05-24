@@ -5,7 +5,7 @@
 
 <h3 class="travel-match-score bg-success text-center">Travel Match Score: <%= @travel_match_score %>%</h4>
 
-<div class="row">
+<div class="row" id="match-lists">
 
 	<!-- both wanna visit -->
 	<div class="col-md-4">
@@ -17,7 +17,7 @@
 					<p>No such country.</p> 
 				<% else %>
 					<% @array_country_travel_records_both_wannavisit.each do |id| %>
-						<%= render Country.find(id) %>
+						<%= render partial: "countries/three_options", locals: { country: Country.find(id) } %>
 					<% end %>
 				<% end %>
 			</div>
@@ -33,7 +33,7 @@
 					<p>No such country.</p> 
 				<% else %>
 					<% @array_country_travel_records_i_wannavisit_friend_havebeen.each do |id| %>
-						<%= render Country.find(id) %>
+						<%= render partial: "countries/three_options", locals: { country: Country.find(id) } %>
 					<% end %>
 				<% end %>
 			</div>
@@ -49,7 +49,7 @@
 					<p>No such country.</p> 
 				<% else %>
 					<% @array_country_travel_records_i_havebeen_friend_wannavisit.each do |id| %>
-						<%= render Country.find(id) %>
+						<%= render partial: "countries/three_options", locals: { country: Country.find(id) } %>
 					<% end %>
 				<% end %>
 			</div>

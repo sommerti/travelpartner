@@ -6,10 +6,10 @@ class CountryTravelRecordsController < ApplicationController
   def create_update
     # user might want to update a record or try to add the same country again 
     # so start by searching for an existing country travel record matching the user and the country
-    country_travel_record_id = current_user.find_country_travel_record(@country)
+    @country_travel_record_id = current_user.find_country_travel_record(@country)
 
     # if such a record does not yet exist, create new record
-    if country_travel_record_id.nil?
+    if @country_travel_record_id.nil?
 
       @country_travel_record = CountryTravelRecord.new
       @country_travel_record.user_id = current_user.id
@@ -26,7 +26,7 @@ class CountryTravelRecordsController < ApplicationController
     # if such a record is found, update the record
     else
 
-      @country_travel_record = CountryTravelRecord.find(country_travel_record_id)
+      @country_travel_record = CountryTravelRecord.find(@country_travel_record_id)
       @country_travel_record.travel_status = @travel_status
 
       if @country_travel_record.save 
