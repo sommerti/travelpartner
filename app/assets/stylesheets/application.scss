@@ -47,6 +47,12 @@ h1{
 .inline{
 	display: inline-block;
 }
+.margin-right-20px{
+	margin-right: 20px;
+}
+.round{
+	border-radius: 100%;
+}
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus{
@@ -263,6 +269,9 @@ body.modal-background{
 }
 .container-country-travel-lists{
 	padding: 20px;
+}
+.container-map-legend{
+	padding: 10px 20px 10px 20px;
 }
 .container-country-travel-record-tab{
 	margin: 10px;

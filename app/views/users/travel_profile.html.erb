@@ -4,7 +4,13 @@
 	<div class="col-md-7">	
 		<!-- panel showing countries grouped by continents -->
 		<div class="panel panel-success panel-countries">
-			<h4>Select countries that you wanna visit or have already been to:</h4>
+			<p>
+				<div class="inline"><button class="btn btn-info btn-xs round">&nbsp;<i class="fa fa-info"></i>&nbsp;</button> More Info</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="inline"><button class="btn btn-danger btn-xs round"><i class="fa fa-heart"></i></button> "I wanna visit!"</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="inline"><button class="btn btn-success btn-xs round"><i class="fa fa-check"></i></button> "I've been there!"</div>
+			</p>
+			<br>
+			
 			<%= render "continent_tabs" %>
 		</div>
 	</div>
@@ -13,6 +19,11 @@
 		<div class="panel panel-default panel-travel-map-and-list">
 			<!-- google map -->
 			<div id="map_countries"></div>
+			<div class="container-map-legend">
+				<div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-20.png") %> countries I wanna visit </div>&nbsp;&nbsp;
+				<div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-20.png") %> countries I've been to </div> 
+			</div>
+
 			<div class="container-country-travel-lists"><%= render "travel_list_tabs" %></div>
 		</div>
 	</div>
@@ -23,6 +34,23 @@
 
 	</div>
 
+</div>
+
+
+<!-- modal popup -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <i class="fa fa-times fa-2x"></i>
+        </button><br>   
+      </div>
+      <div class="modal-body">
+        <iframe src="" frameborder="0" width="865px;" height="500px;"></iframe>
+      </div>
+      <div class="modal-footer"></div>
+  </div>
 </div>
 
 

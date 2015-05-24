@@ -1,0 +1,3 @@
+<a href="" id="wiki_<%= country.id %>">&nbsp;<i class="fa fa-info"></i>&nbsp;</a>
+<%= link_to ("<i class='fa fa-heart'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), method: :post %>
+<%= link_to ("<i class='fa fa-check'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), method: :post %>
