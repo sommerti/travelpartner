@@ -20,10 +20,10 @@ Rails.application.routes.draw do
 			get "big_map"
 			get "match"
 			post "create_update_country_travel_record", to: "country_travel_records#create_update"
+			get "follow"
+	    	get "unfollow"
 		end
 	end
 
 	resources :country_travel_records
-
-
 end

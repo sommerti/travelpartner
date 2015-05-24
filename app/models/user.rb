@@ -55,6 +55,13 @@ class User < ActiveRecord::Base
 	]
 	end
 
+	# gem acts_as_follower
+	acts_as_followable
+	acts_as_follower
+
+
+
+
    	def fullname
    		if self.firstname.blank? and self.lastname.blank?
    			""

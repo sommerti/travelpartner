@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :travel_records, :match, :big_map]
+  before_action :set_user, only: [:show, :edit, :update, :travel_records, :match, :big_map, :follow, :unfollow]
   before_action :format_params, only: [:update]
 
   def show
@@ -68,6 +68,18 @@ class UsersController < ApplicationController
   def big_map
     # display country travel records on map
     @hash_country_travel_records = build_country_travel_records_hash(@user)
+  end
+
+  def follow
+    current_user.follow(@user)
+    flash[:notice] = "Following #{@user.fullname} now."
+    redirect_to @user
+  end
+
+  def unfollow
+    current_user.stop_following(@user)
+    flash[:alert] = "Stopped following #{@user.fullname}."
+    redirect_to @user
   end
 
   private

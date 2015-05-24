@@ -15,59 +15,87 @@
   <div class="col-md-4">
     <div class="panel panel-profile">
       
-      <div class="avatar-profile inline"><%= image_tag @user.avatar.url(:medium) %></div>
-
-      <div class="profile-table inline">
-      <table>
-        <!-- display email and edit login only if user views oneself -->
-        <%if @user == current_user %>
-          <tr>
-            <td><strong>Login email:</strong></td> 
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>      
-              <% if @user == current_user %>
-                <%= link_to ("Edit Login <span class='glyphicon glyphicon-edit'></span>").html_safe, edit_user_registration_path, class: "btn btn-warning btn-xs" %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="avatar-profile">
+            <%= image_tag @user.avatar.url(:medium) %>
+          </div>
+          <div class="aligned-center">
+            <% if @user.followers.include?(current_user) %>
+              <%= link_to 'Unfollow', unfollow_user_path(@user), class: "btn btn-danger btn-sm" %>
+            <% elsif current_user!= @user %>
+              <%= link_to 'Follow', follow_user_path(@user), class: "btn btn-success btn-sm" %>
+            <% end %>
+          </div>
+        </div> <!-- /col -->
+        <div class="col-md-8">
+          <div class="profile-table">
+            <table>
+              <!-- display email and edit login only if user views oneself -->
+              <%if @user == current_user %>
+                <tr>
+                  <td><strong>Login email:</strong></td> 
+                  <td><%= @user.email %></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>      
+                    <% if @user == current_user %>
+                      <%= link_to ("Edit Login <span class='glyphicon glyphicon-edit'></span>").html_safe, edit_user_registration_path, class: "btn btn-warning btn-xs" %>
+                    <% end %>
+                  </td>
+              </tr>
+              <tr><td>&nbsp;</td><td></td></tr>
               <% end %>
-            </td>
-        </tr>
-        <tr><td>&nbsp;</td><td></td></tr>
-        <% end %>
 
-        <tr>
-          <td><strong>First name:</strong></td>
-          <td><%= @user.firstname %></td>
-        </tr>
-        <tr>
-          <td><strong>Last name:</strong></td>
-          <td><%= @user.lastname %></td>
-        </tr>
-        <tr>
-          <td><strong>Country:</strong></td>
-          <td><%= @user.country %></td>
-        </tr>
-        <tr>
-          <td><strong>City:</strong> </td>
-          <td<%= @user.city %>></td>
-        </tr>
-        <tr>
-          <td><strong>Gender:</strong></td>
-          <td><%= @user.gender %></td>
-        </tr>
-        <tr>
-          <td><strong>Age:</strong></td>
-          <td><%= @user.age %></td>
-        </tr>
-        <tr>
-          <td><strong>About me:</strong></td>
-          <td><%= @user.about %></td>
-        </tr>
-      </table>   
-      </div> 
+              <tr>
+                <td><strong>First name:</strong></td>
+                <td><%= @user.firstname %></td>
+              </tr>
+              <tr>
+                <td><strong>Last name:</strong></td>
+                <td><%= @user.lastname %></td>
+              </tr>
+              <tr>
+                <td><strong>Country:</strong></td>
+                <td><%= @user.country %></td>
+              </tr>
+              <tr>
+                <td><strong>City:</strong> </td>
+                <td<%= @user.city %>></td>
+              </tr>
+              <tr>
+                <td><strong>Gender:</strong></td>
+                <td><%= @user.gender %></td>
+              </tr>
+              <tr>
+                <td><strong>Age:</strong></td>
+                <td><%= @user.age %></td>
+              </tr>
+              <tr>
+                <td><strong>About me:</strong></td>
+                <td><%= @user.about %></td>
+              </tr>
+            </table>   
+          </div>           
+        </div> <!-- /col -->
+      </div> <!-- /row -->
+    </div> <!-- /panal -->
 
+    <div class="panel panel-follow">
+      <p><strong>Followed by:</strong></p> 
+      <% @user.followers.each do |follower| %>
+        <%= render partial: "users/follow_avatar", locals: { user: follower} %>
+      <% end %>
     </div>
+
+    <div class="panel panel-follow">
+      <p><strong>Following:</strong></p> 
+      <% @user.all_following.each do |following| %>
+        <%= render partial: "users/follow_avatar", locals: { user: following} %>
+      <% end %>
+    </div>
+
   </div>
   <div class="col-md-8">
       
