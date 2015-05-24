@@ -17,12 +17,13 @@
 
 	<div class="col-md-4 smaller-gutter">
 		<div class="panel panel-default panel-travel-map-and-list">
-			<!-- google map -->
+			<!-- google map, legend, view big map button -->
 			<div id="map_countries"></div>
 			<div class="container-map-legend">
 				<div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-20.png") %> countries I wanna visit </div>&nbsp;&nbsp;
 				<div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-20.png") %> countries I've been to </div> 
 			</div>
+			<div class="aligned-center"><%= link_to "View Big Map", big_map_user_path(current_user), class: "btn btn-success btn-xs" %></div>
 
 			<div class="container-country-travel-lists"><%= render "travel_list_tabs" %></div>
 		</div>
@@ -59,17 +60,19 @@
 
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map_countries'}}, function(){
-	<% if !@hash_country_travel_records.blank? %>
-		markers = handler.addMarkers(<%= @hash_country_travel_records.to_json.html_safe %>);
+	<% if @hash_country_travel_records.blank? %>
+		handler.getMap().setZoom(2);
 
-		// to center on a marker
+	<% elsif @hash_country_travel_records.size == 1 %>
+		markers = handler.addMarkers(<%= @hash_country_travel_records.to_json.html_safe %>);
 		handler.map.centerOn(markers[0]); 
-		// to set the map zoom
 		handler.getMap().setZoom(4);
+
+	<% else %>
+		markers = handler.addMarkers(<%= @hash_country_travel_records.to_json.html_safe %>);
 		handler.bounds.extendWith(markers);
 		handler.fitMapToBounds();
-	<% else %>
-		handler.getMap().setZoom(2);
+
 	<% end %>
 });
 

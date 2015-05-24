@@ -1,0 +1,32 @@
+<!-- google map -->
+<div id="map_big_map"></div>
+
+<div class="aligned-center margin-top-10px">
+	<%= link_to "Back To Travel Profile", travel_profile_user_path(current_user), class: "btn btn-success" %>
+</div>
+
+
+<!-- google map script -->
+<script>
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map_big_map'}}, function(){
+	<% if @hash_country_travel_records_big_map.blank? %>
+		handler.getMap().setZoom(2);
+
+	<% elsif @hash_country_travel_records_big_map.size == 1 %>
+		markers = handler.addMarkers(<%= @hash_country_travel_records_big_map.to_json.html_safe %>);
+		handler.map.centerOn(markers[0]); 
+		handler.getMap().setZoom(4);
+
+	<% else %>
+		markers = handler.addMarkers(<%= @hash_country_travel_records_big_map.to_json.html_safe %>);
+		handler.bounds.extendWith(markers);
+		handler.fitMapToBounds();
+
+	<% end %>
+});
+
+</script>
+
+

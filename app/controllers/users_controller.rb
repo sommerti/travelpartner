@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :travel_profile, :match]
+  before_action :set_user, only: [:show, :edit, :update, :travel_profile, :match, :big_map]
   before_action :format_params, only: [:update]
 
   def show
@@ -73,6 +73,33 @@ class UsersController < ApplicationController
       current_user.country_travel_records_havebeen.pluck("country_id") &  
       @user.country_travel_records_wannavisit.pluck("country_id")
 
+
+    @travel_match_score = (@array_country_travel_records_both_wannavisit.size.to_f / 
+                            current_user.country_travel_records_wannavisit.size * 100).round(2)
+  
+  end
+
+  def big_map
+    @hash_country_travel_records_big_map = Gmaps4rails.build_markers(@user.country_travel_records) do |record, marker|
+      marker.lat record.country.latitude
+      marker.lng record.country.longitude
+
+      if record.travel_status == "wannavisit"
+        marker.picture({
+          url: "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-20.png",
+          width: 32,
+          height: 32
+        })
+      else
+        marker.picture({       
+          url: "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-20.png",
+          width: 32,
+          height: 32
+        })
+      end
+      
+      marker.infowindow "<div style='width:200px;height:100%;'>#{record.country.country_name}</div>"
+      end
   end
 
 
