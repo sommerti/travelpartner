@@ -15,11 +15,11 @@
         
         <!-- display roll-over highlight if current page -->
         <li class=
-          <% if controller.class == CountriesController && controller.action_name == 'index' %>
+          <% if controller.class == UsersController && controller.action_name == 'travel_profile' %>
             "active"
           <% end %>
         >
-          <%= link_to 'All Countries', countries_path%>
+          <%= link_to 'My Travel Profile', travel_profile_user_path(current_user) %>
         </li>
   
 

@@ -1,7 +1,7 @@
 <h1><%= @user.fullname.blank? ? "" : "#{@user.fullname}'s " %>Travel Profile</h1>
 
 <div class="row">
-	<div class="col-md-7">	
+	<div class="col-md-7 smaller-gutter">	
 		<!-- panel showing countries grouped by continents -->
 		<div class="panel panel-success panel-countries">
 			<p>
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-4 smaller-gutter">
 		<div class="panel panel-default panel-travel-map-and-list">
 			<!-- google map -->
 			<div id="map_countries"></div>
@@ -28,10 +28,10 @@
 		</div>
 	</div>
 
-	<div class="col-md-1">
-		
-		friend's list
-
+	<div class="col-md-1 smaller-gutter">
+		<div class="panel panel-friend-avatars">
+			<%= render "users/friend_avatar" %>
+		</div>
 	</div>
 
 </div>

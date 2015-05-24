@@ -4,9 +4,13 @@
   </div>
 	
   <div class="col-md-8">
-    <button id="wiki_<%= country.id %>" class="btn btn-info btn-xs round">&nbsp;<i class="fa fa-info"></i>&nbsp;</button>&nbsp;
-  	<%= link_to ("<i class='fa fa-heart'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-danger btn-xs round", method: :post %>&nbsp;
-  	<%= link_to ("<i class='fa fa-check'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), class: "btn btn-success btn-xs round", method: :post %>
+  <% if user_signed_in? %>
+     
+      <button id="wiki_<%= country.id %>" class="btn btn-info btn-xs round">&nbsp;<i class="fa fa-info"></i>&nbsp;</button>&nbsp;
+    	<%= link_to ("<i class='fa fa-heart'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-danger btn-xs round", method: :post %>&nbsp;
+    	<%= link_to ("<i class='fa fa-check'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), class: "btn btn-success btn-xs round", method: :post %>
+
+      <% end %>
   </div>
 </div>
 <br>

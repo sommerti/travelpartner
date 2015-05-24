@@ -46,6 +46,10 @@ h1{
 }
 .inline{
 	display: inline-block;
+	vertical-align: top;
+}
+.aligned-center{
+	text-align: center;
 }
 .margin-right-20px{
 	margin-right: 20px;
@@ -68,7 +72,9 @@ body.modal-background{
 	border-width: 0;
 
 }
-
+.smaller-gutter{
+  padding: 0 5px;
+}
 
 
 
@@ -318,6 +324,10 @@ body.modal-background{
 	padding: 0;
 
 }
+.panel-friend-avatars{
+	padding: 10px;
+
+}
 
 
 
@@ -398,6 +408,10 @@ body.modal-background{
 			border-radius: 100%;
 		}
 }
+.avatar-name{
+	margin: 3px 0 3px 0;
+	font-size: 0.8em;
+}
 .avatar-comment{
 		img{
 			width: 50px;
@@ -410,10 +424,17 @@ body.modal-background{
 }
 
 .avatar-profile{
+		margin: 10px 20px 10px 0;
+		
 		img{
-			width: 120px;
+			width: 100px;
 			border-radius: 5px;
-			margin: 10px 0 10px 0;
+		}
+}
+.avatar-friend-list{		
+		img{
+			width: 70px;
+			border-radius: 100%;
 		}
 }
 .avatar-group{
