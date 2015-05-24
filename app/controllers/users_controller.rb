@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :travel_profile]
+  before_action :set_user, only: [:show, :edit, :update, :travel_profile, :match]
   before_action :format_params, only: [:update]
 
   def show
@@ -60,7 +60,20 @@ class UsersController < ApplicationController
 
   end
 
+  def match
+    @array_country_travel_records_both_wannavisit = 
+      current_user.country_travel_records_wannavisit.pluck("country_id") & 
+      @user.country_travel_records_wannavisit.pluck("country_id")
+    
+    @array_country_travel_records_i_wannavisit_friend_havebeen = 
+      current_user.country_travel_records_wannavisit.pluck("country_id") &
+      @user.country_travel_records_havebeen.pluck("country_id")
+    
+    @array_country_travel_records_i_havebeen_friend_wannavisit = 
+      current_user.country_travel_records_havebeen.pluck("country_id") &  
+      @user.country_travel_records_wannavisit.pluck("country_id")
 
+  end
 
 
   private

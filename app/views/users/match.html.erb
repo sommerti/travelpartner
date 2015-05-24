@@ -1,0 +1,61 @@
+<h1>Travel Profile Match With <%= @user.fullname %></h1>
+
+<div class="row">
+
+	<!-- both wanna visit -->
+	<div class="col-md-4">
+		<div class="panel">
+			<div class="panel-heading"><h4>We both wanna visit:</h4></div>
+			<div class="panel-body">
+				<% @array_country_travel_records_both_wannavisit.each do |id| %>
+					<%= render Country.find(id) %>
+				<% end %>
+			</div>
+		</div>
+	</div> <!-- /col -->
+
+	<!-- i wanna visit, friend have been -->
+	<div class="col-md-4">
+		<div class="panel">
+			<div class="panel-heading"><h4>I wanna visit and my friend has been to:</h4></div>
+			<div class="panel-body">
+				<% @array_country_travel_records_i_wannavisit_friend_havebeen.each do |id| %>
+					<%= render Country.find(id) %>
+				<% end %>
+			</div>
+		</div>
+	</div> <!-- /col -->
+
+	<!-- i have been, friend wanna visit -->
+	<div class="col-md-4">
+		<div class="panel">
+			<div class="panel-heading"><h4>I have been to and my friend wanna visit:</h4></div>
+			<div class="panel-body">
+				<% @array_country_travel_records_i_havebeen_friend_wannavisit.each do |id| %>
+					<%= render Country.find(id) %>
+				<% end %>
+			</div>
+		</div>
+	</div> <!-- /col -->
+
+
+</div> <!-- /row -->
+
+
+
+
+<!-- modal popup -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <i class="fa fa-times fa-2x"></i>
+        </button><br>   
+      </div>
+      <div class="modal-body">
+        <iframe src="" frameborder="0" width="865px;" height="500px;"></iframe>
+      </div>
+      <div class="modal-footer"></div>
+  </div>
+</div>

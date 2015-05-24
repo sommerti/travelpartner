@@ -35,7 +35,7 @@ gem 'spring'
 
 gem 'annotate', '~> 2.6.8'
 gem 'better_errors', '~> 2.1.1'
-gem 'rack-mini-profiler', '~> 0.9.3'
+# gem 'rack-mini-profiler', '~> 0.9.3'
 gem 'seed-fu', '~> 2.3.5'
 gem 'faker', '~> 1.4.3'
 

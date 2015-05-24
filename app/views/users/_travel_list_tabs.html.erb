@@ -12,7 +12,7 @@
     <div role="tabpanel" class="tab-pane fade in active" id="wannavisit">
       <div class="container-country-travel-record-tab">
         <% @user.country_travel_records_wannavisit.each do |record| %>
-          <%= render partial: "countries_wannavisit", locals: { record: record }  %>
+          <%= render partial: "countries_wannavisit", locals: { record: record } %>
         <% end %>
       </div>
     </div>
@@ -21,7 +21,7 @@
     <div role="tabpanel" class="tab-pane fade" id="havebeen">
       <div class="container-country-travel-record-tab">
         <% @user.country_travel_records_havebeen.each do |record| %>
-          <%= render partial: "countries_havebeen", locals: { record: record }  %>
+          <%= render partial: "countries_havebeen", locals: { record: record } %>
         <% end %>
       </div>
     </div>
