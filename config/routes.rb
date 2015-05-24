@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 	devise_for :users
 	resources :users do
 		member do
-			get "travel_profile"
+			get "travel_records"
 			get "big_map"
 			get "match"
 			post "create_update_country_travel_record", to: "country_travel_records#create_update"

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :travel_profile, :match, :big_map]
+  before_action :set_user, only: [:show, :edit, :update, :travel_records, :match, :big_map]
   before_action :format_params, only: [:update]
 
   def show
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def travel_profile
+  def travel_records
     @countries = Country.all
     @countries_in_asia = Country.in_asia
     @countries_in_europe = Country.in_europe

@@ -1,6 +1,6 @@
 <h1>
 	Travel Profile Match With <%= @user.fullname %>
-	<%= link_to "Back To Travel Profile", travel_profile_user_path(current_user), class: "btn btn-primary" %>
+	<%= link_to "Back To Travel Records", travel_records_user_path(current_user), class: "btn btn-primary" %>
 </h1>
 
 <h3 class="travel-match-score bg-success text-center">Travel Match Score: <%= @travel_match_score %>%</h4>
@@ -27,7 +27,7 @@
 	<!-- i wanna visit, friend have been -->
 	<div class="col-md-4">
 		<div class="panel">
-			<div class="panel-heading"><h4>I wanna visit and my friend has been to:</h4></div>
+			<div class="panel-heading"><h4>I wanna visit and <%= @user.firstname %> has been to:</h4></div>
 			<div class="panel-body">
 				<% if @array_country_travel_records_i_wannavisit_friend_havebeen.blank? %>
 					<p>No such country.</p> 
@@ -43,7 +43,7 @@
 	<!-- i have been, friend wanna visit -->
 	<div class="col-md-4">
 		<div class="panel">
-			<div class="panel-heading"><h4>I have been to and my friend wanna visit:</h4></div>
+			<div class="panel-heading"><h4>I have been to and <%= @user.firstname %> wanna visit:</h4></div>
 			<div class="panel-body">
 				<% if @array_country_travel_records_i_havebeen_friend_wannavisit.blank? %>
 					<p>No such country.</p> 

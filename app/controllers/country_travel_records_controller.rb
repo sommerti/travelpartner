@@ -38,7 +38,7 @@ class CountryTravelRecordsController < ApplicationController
 
     end
 
-    redirect_to travel_profile_user_path(current_user)
+    redirect_to travel_records_user_path(current_user)
 
   end
 
@@ -48,7 +48,7 @@ class CountryTravelRecordsController < ApplicationController
     @country_travel_record.destroy
     flash[:notice] = "'#{@country_name}' has been removed."
 
-    redirect_to travel_profile_user_path(current_user)
+    redirect_to travel_records_user_path(current_user)
   end
 
   private

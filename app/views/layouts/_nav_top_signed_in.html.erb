@@ -15,11 +15,11 @@
         
         <!-- display roll-over highlight if current page -->
         <li class=
-          <% if controller.class == UsersController && controller.action_name == 'travel_profile' %>
+          <% if controller.class == UsersController && controller.action_name == 'travel_records' %>
             "active"
           <% end %>
         >
-          <%= link_to 'My Travel Profile', travel_profile_user_path(current_user) %>
+          <%= link_to 'My Travel Records', travel_records_user_path(current_user) %>
         </li>
   
 
