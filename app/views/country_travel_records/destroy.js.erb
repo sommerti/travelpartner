@@ -1,0 +1,22 @@
+// reload personal lists
+$("#wannavisit").load(location.href + " #wannavisit");
+$("#havebeen").load(location.href + " #havebeen");
+
+
+// #notice intially has a hidden class; on success ajax, 
+// remove the class, show it, then fade it out
+
+$("#ajaxmsg").html("<%= flash[:notice] %>");
+
+$("#ajaxloader").removeClass("hidden");
+$("#ajaxloader").show();
+
+setTimeout(function() {
+	$("#ajaxloader").hide();
+	$("#ajaxmsg").removeClass("hidden");
+	$('#ajaxmsg').show();
+}, 2000);
+
+setTimeout(function() {
+    $('#ajaxmsg').fadeOut('slow');
+}, 3500);

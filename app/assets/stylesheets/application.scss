@@ -87,13 +87,52 @@ body.modal-background{
 	h2{
 		font-size: 1.2em;
 	}
-
 	color: #468847;
 	background-color: #dff0d8;
 	border-color: #d6e9c6;
 	padding: 20px;
 	border-radius: 5px;
 	margin-bottom: 20px;
+}
+.ajaxmsg{
+	text-align: center;
+
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	margin-left: -10%;
+	width: 20%;
+	height: 9%;
+
+	color: #468847;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	padding: 20px;
+	border-radius: 5px;
+	z-index: 10;
+
+}
+
+.ajaxloader{
+	text-align: center;
+
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	margin-left: -10%;
+	width: 20%;
+	height: 9%;
+
+	color: #468847;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	padding: 15px 20px 20px 20px;
+	border-radius: 5px;
+	z-index: 20;
+
+}
+.hidden{
+	visibility: hidden;
 }
 #alert{
 	h2{

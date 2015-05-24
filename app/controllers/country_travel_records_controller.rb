@@ -38,7 +38,11 @@ class CountryTravelRecordsController < ApplicationController
 
     end
 
-    redirect_to travel_records_user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to travel_records_user_path(current_user) }
+      format.js { flash[:notice] = "Travel record updated." }
+    end
+    
 
   end
 
@@ -48,7 +52,11 @@ class CountryTravelRecordsController < ApplicationController
     @country_travel_record.destroy
     flash[:notice] = "'#{@country_name}' has been removed."
 
-    redirect_to travel_records_user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to travel_records_user_path(current_user) }
+      format.js { flash[:notice] = "Travel record deleted." }
+    end
+
   end
 
   private

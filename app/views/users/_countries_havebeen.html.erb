@@ -4,8 +4,8 @@
   </div>
 	
   <div class="col-md-8">
-  	<%= link_to ("<i class='fa fa-heart'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: record.country.id, travel_status: "wannavisit"), class: "btn btn-danger btn-xs round", method: :post %>&nbsp;
-  	<%= link_to ("<i class='fa fa-times'></i>").html_safe, country_travel_record_path(record), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-xs round" %>
+  	<%= link_to ("<i class='fa fa-heart'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: record.country.id, travel_status: "wannavisit"), class: "btn btn-danger btn-xs round", method: :post, remote: true %>&nbsp;
+  	<%= link_to ("<i class='fa fa-times'></i>").html_safe, country_travel_record_path(record), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-xs round", remote: true %>
   </div>
 </div>
 <br>

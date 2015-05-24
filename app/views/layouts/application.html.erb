@@ -25,6 +25,9 @@
 		<%= render "layouts/nav_top_not_signed_in" if !(controller.controller_name == "welcome" && controller.action_name == "wiki") %> 
 	<% end %>
 
+	<div id="ajaxloader" class="ajaxloader hidden"><%= image_tag("ajax-loader.gif") %></div>
+	<h4 id="ajaxmsg" class="ajaxmsg hidden"><%= notice %></h4>
+
 	<div class="container" role="main">
 		<% if !notice.nil? %>
 			<p id="notice"><%= notice %></p>
@@ -41,6 +44,14 @@
 
 	<!-- notice/alert disappears after a few seconds -->
 	<script>
+		$(document).ready(function(){
+			setTimeout(function(){
+				$('#notice').fadeOut("slow", function(){
+					$(this).remove();
+				})	
+			}, 4000);
+		});
+
 		$(document).ready(function(){
 			setTimeout(function(){
 				$('#alert').fadeOut("slow", function(){
