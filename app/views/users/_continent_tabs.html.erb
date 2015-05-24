@@ -57,9 +57,38 @@
     </div>
 
     <div role="tabpanel" class="tab-pane fade" id="search">
-      <div class="container-country-tab">
-        search box
+ 
+      <div class="search-country">     
+        <p>Search for a country:</p>
+        <%= form_tag travel_records_user_path(current_user), class: "form-inline", method: :get do %>
+          <%= text_field_tag :search, params[:search], class: "form-control margin-search-action" %>
+          <%= submit_tag "Search", class: "btn btn-primary btn-sm margin-search-action" %>
+        <% end %>
       </div>
+
+      <% if !params[:search].blank? %>
+        <%= render @countries_search_results %>
+      <% end %>
+        
+
     </div>
   </div>
 </div>
+
+
+
+<!-- current tab stays active after refreshing -->
+<script>
+$(document).ready(function() {
+    if(location.hash) {
+        $('a[href=' + location.hash + ']').tab('show');
+    }
+    $(document.body).on("click", "a[data-toggle]", function(event) {
+        location.hash = this.getAttribute("href");
+    });
+});
+$(window).on('popstate', function() {
+    var anchor = location.hash || $("a[data-toggle=tab]").first().attr("href");
+    $('a[href=' + anchor + ']').tab('show');
+});
+</script>

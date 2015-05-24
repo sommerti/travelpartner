@@ -23,7 +23,7 @@
 				<div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-20.png") %> countries I wanna visit </div>&nbsp;&nbsp;
 				<div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-20.png") %> countries I've been to </div> 
 			</div>
-			<div class="aligned-center"><%= link_to "View Big Map", big_map_user_path(current_user), class: "btn btn-success btn-xs" %></div>
+			<div class="aligned-center"><%= link_to "View Big Map", big_map_user_path(current_user), class: "btn btn-primary btn-xs" %></div>
 
 			<div class="container-country-travel-lists"><%= render "travel_list_tabs" %></div>
 		</div>
@@ -48,6 +48,7 @@
         </button><br>   
       </div>
       <div class="modal-body">
+      	<div class="loading">Loading country information...</div>
         <iframe src="" frameborder="0" width="865px;" height="500px;"></iframe>
       </div>
       <div class="modal-footer"></div>

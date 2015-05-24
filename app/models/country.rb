@@ -27,5 +27,11 @@ class Country < ActiveRecord::Base
 	geocoded_by :country_name
 	after_validation :geocode, if: :country_name_changed? 
 
+	include PgSearch
+	pg_search_scope :search, against: :country_name
+
+	def self.text_search(query)
+		search(query)
+	end
 
 end

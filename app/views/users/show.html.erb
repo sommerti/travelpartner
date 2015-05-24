@@ -11,50 +11,128 @@
   <% end %>
 <% end %>
 
-<div class="avatar-profile inline"><%= image_tag @user.avatar.url(:medium) %></div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-profile">
+      
+      <div class="avatar-profile inline"><%= image_tag @user.avatar.url(:medium) %></div>
 
-<div class="profile-table inline">
-<table>
-  <tr>
-    <td><strong>Login email:</strong></td> 
-    <td><%= @user.email %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>      
-      <% if @user == current_user %>
-        <%= link_to ("Edit Login <span class='glyphicon glyphicon-edit'></span>").html_safe, edit_user_registration_path, class: "btn btn-warning btn-xs" %>
-      <% end %>
-    </td>
-  </tr>
-  <tr><td>&nbsp;</td><td></td></tr>
-  <tr>
-    <td><strong>First name:</strong></td>
-    <td><%= @user.firstname %></td>
-  </tr>
-  <tr>
-    <td><strong>Last name:</strong></td>
-    <td><%= @user.lastname %></td>
-  </tr>
-  <tr>
-    <td><strong>Country:</strong></td>
-    <td><%= @user.country %></td>
-  </tr>
-  <tr>
-    <td><strong>City:</strong> </td>
-    <td<%= @user.city %>></td>
-  </tr>
-  <tr>
-    <td><strong>Gender:</strong></td>
-    <td><%= @user.gender %></td>
-  </tr>
-  <tr>
-    <td><strong>Age:</strong></td>
-    <td><%= @user.age %></td>
-  </tr>
-  <tr>
-    <td><strong>About me:</strong></td>
-    <td><%= @user.about %></td>
-  </tr>
-</table>   
-</div> 
+      <div class="profile-table inline">
+      <table>
+        <!-- display email and edit login only if user views oneself -->
+        <%if @user == current_user %>
+          <tr>
+            <td><strong>Login email:</strong></td> 
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>      
+              <% if @user == current_user %>
+                <%= link_to ("Edit Login <span class='glyphicon glyphicon-edit'></span>").html_safe, edit_user_registration_path, class: "btn btn-warning btn-xs" %>
+              <% end %>
+            </td>
+        </tr>
+        <tr><td>&nbsp;</td><td></td></tr>
+        <% end %>
+
+        <tr>
+          <td><strong>First name:</strong></td>
+          <td><%= @user.firstname %></td>
+        </tr>
+        <tr>
+          <td><strong>Last name:</strong></td>
+          <td><%= @user.lastname %></td>
+        </tr>
+        <tr>
+          <td><strong>Country:</strong></td>
+          <td><%= @user.country %></td>
+        </tr>
+        <tr>
+          <td><strong>City:</strong> </td>
+          <td<%= @user.city %>></td>
+        </tr>
+        <tr>
+          <td><strong>Gender:</strong></td>
+          <td><%= @user.gender %></td>
+        </tr>
+        <tr>
+          <td><strong>Age:</strong></td>
+          <td><%= @user.age %></td>
+        </tr>
+        <tr>
+          <td><strong>About me:</strong></td>
+          <td><%= @user.about %></td>
+        </tr>
+      </table>   
+      </div> 
+
+    </div>
+  </div>
+  <div class="col-md-8">
+      
+      <div class="panel panel-default panel-travel-map-and-list">
+        <!-- google map, legend, view big map button -->
+        <div id="map_countries_profile"></div>
+        <div class="container-map-legend">
+          <div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-20.png") %> countries I wanna visit </div>&nbsp;&nbsp;
+          <div class="inline"><%= image_tag("https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-20.png") %> countries I've been to </div> 
+        </div>
+
+        <div class="container-country-travel-lists"><%= render "travel_list_tabs" %></div>
+      </div>
+
+    </div> <!-- /col -->
+</div> <!-- /row -->
+
+
+
+
+
+<!-- modal popup -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <i class="fa fa-times fa-2x"></i>
+        </button><br>   
+      </div>
+      <div class="modal-body">
+        <iframe src="" frameborder="0" width="865px;" height="500px;"></iframe>
+      </div>
+      <div class="modal-footer"></div>
+  </div>
+</div>
+
+
+<!-- google map script -->
+<script>
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map_countries_profile'}}, function(){
+  <% if @hash_country_travel_records.blank? %>
+    handler.getMap().setZoom(2);
+
+  <% elsif @hash_country_travel_records.size == 1 %>
+    markers = handler.addMarkers(<%= @hash_country_travel_records.to_json.html_safe %>);
+    handler.map.centerOn(markers[0]); 
+    handler.getMap().setZoom(4);
+
+  <% else %>
+    markers = handler.addMarkers(<%= @hash_country_travel_records.to_json.html_safe %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+
+  <% end %>
+});
+
+</script>
+
+
+
+
+
+
+
+
