@@ -9,6 +9,8 @@
 #  continent_code :string
 #  created_at     :datetime
 #  updated_at     :datetime
+#  latitude       :float
+#  longitude      :float
 #
 
 require 'test_helper'

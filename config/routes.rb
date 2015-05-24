@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
 	# model routes
 	get "countries", to: "countries#index"
+	get "update_country", to: "countries#update"
 
 	devise_for :users
 	resources :users do

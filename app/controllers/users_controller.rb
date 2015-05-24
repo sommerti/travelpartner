@@ -42,19 +42,19 @@ class UsersController < ApplicationController
 
       if record.travel_status == "wannavisit"
         marker.picture({
-          url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|007FFF|000000",
+          url: "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-20.png",
           width: 32,
           height: 32
         })
       else
         marker.picture({       
-          url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
+          url: "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-20.png",
           width: 32,
           height: 32
         })
       end
       
-      marker.infowindow "<div style='width:200px;height:100%;'>#{country.name}</div>"
+      marker.infowindow "<div style='width:200px;height:100%;'>#{record.country.country_name}</div>"
     end
 
 

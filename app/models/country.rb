@@ -9,6 +9,8 @@
 #  continent_code :string
 #  created_at     :datetime
 #  updated_at     :datetime
+#  latitude       :float
+#  longitude      :float
 #
 
 class Country < ActiveRecord::Base
@@ -21,4 +23,9 @@ class Country < ActiveRecord::Base
 	scope :in_africa, -> { where(continent_name: "Africa") }
 	scope :in_oceania, -> { where(continent_name: "Oceania") }
 	scope :in_antarctica, -> { where(continent_name: "Antarctica") }
+
+	geocoded_by :country_name
+	after_validation :geocode, if: :country_name_changed? 
+
+
 end
