@@ -36,4 +36,10 @@ class ApplicationController < ActionController::Base
 	end
 
 
+	rescue_from CanCan::AccessDenied do |exception|
+		flash[:alert] = "Not authorized."
+		redirect_to :back
+	end
+
+
 end

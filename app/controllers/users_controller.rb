@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize! :update, @user
+
     @user.slug = nil
     if @user.update(@formatted_params)
         
@@ -71,12 +73,17 @@ class UsersController < ApplicationController
   end
 
   def follow
+    authorize! :follow, @user
+
+
     current_user.follow(@user)
     flash[:notice] = "Following #{@user.fullname} now."
     redirect_to @user
   end
 
   def unfollow
+    authorize! :unfollow, @user
+
     current_user.stop_following(@user)
     flash[:alert] = "Stopped following #{@user.fullname}."
     redirect_to @user

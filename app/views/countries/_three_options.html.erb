@@ -7,6 +7,7 @@
     <% if user_signed_in? %>
      
       <button id="wiki_<%= country.id %>" class="btn btn-info btn-xs round">&nbsp;<i class="fa fa-info"></i>&nbsp;</button>&nbsp;
+
     	<%= link_to ("<i class='fa fa-heart'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-danger btn-xs round", method: :post, remote: true %>&nbsp;
     	<%= link_to ("<i class='fa fa-check'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), class: "btn btn-success btn-xs round", method: :post, remote: true %>&nbsp;
       <%= link_to ("<i class='fa fa-times'></i>").html_safe, country_travel_record_path(id: current_user.find_country_travel_record(country)), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-xs round", remote: true %>
