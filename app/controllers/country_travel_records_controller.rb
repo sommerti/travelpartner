@@ -40,7 +40,7 @@ class CountryTravelRecordsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to travel_records_user_path(current_user) }
-      format.js { flash[:notice] = "Travel record updated." }
+      format.js
     end
     
 
@@ -54,7 +54,7 @@ class CountryTravelRecordsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to travel_records_user_path(current_user) }
-      format.js { flash[:notice] = "Travel record deleted." }
+      format.js
     end
 
   end

@@ -1,1 +1,5 @@
-<%= @response["query"]["pages"][@response["query"]["pages"].keys.first]["extract"].html_safe%>
+<% if !@response["query"]["pages"][@response["query"]["pages"].keys.first]["extract"].blank? %>
+	<%= @response["query"]["pages"][@response["query"]["pages"].keys.first]["extract"].html_safe%>
+<% else %>
+	<p>Country information not available.</p>
+<% end %>
