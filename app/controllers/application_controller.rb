@@ -16,13 +16,13 @@ class ApplicationController < ActionController::Base
 
 		  if record.travel_status == "wannavisit"
 		    marker.picture({
-		      url: "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-20.png",
+		      url: view_context.image_path("heart.png"),
 		      width: 32,
 		      height: 32
 		    })
 		  else
 		    marker.picture({       
-		      url: "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-20.png",
+		      url: view_context.image_path("check.png"),
 		      width: 32,
 		      height: 32
 		    })

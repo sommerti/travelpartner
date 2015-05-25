@@ -19,9 +19,25 @@
             "active"
           <% end %>
         >
-          <%= link_to 'My Travel Records', travel_records_user_path(current_user) %>
+          <%= link_to 'Travel Records', travel_records_user_path(current_user) %>
         </li>
   
+        <li class=
+          <% if controller.class == UsersController && controller.action_name == 'my_connections' %>
+            "active"
+          <% end %>
+        >
+          <%= link_to 'My Connections', my_connections_user_path(current_user) %>
+        </li>
+
+
+          <li class=
+          <% if controller.class == UsersController && controller.action_name == 'show' %>
+            "active"
+          <% end %>
+        >
+          <%= link_to 'Profile', user_path(current_user) %>
+        </li>
 
       </ul>
 

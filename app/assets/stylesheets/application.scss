@@ -194,7 +194,9 @@ body.modal-background{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-
+.margin-search-action{
+	margin-top: 5px;
+}
 
 
 // landing page
@@ -285,6 +287,9 @@ body.modal-background{
 		margin-top: 8%;
 	}
 	p{
+		width: 60%;
+		margin-left: auto;
+		margin-right: auto;
 		font-family: 'PT Serif', serif;
 		font-size: 2.5em;
 		font-weight: 700;
@@ -359,6 +364,14 @@ body.modal-background{
 	text-align: center;
 	margin-bottom: 20px;
 }
+.container-profile-avatar-follow{
+	width: 80px;
+}
+.btn-follow-unfollow{
+	margin-left: 15px;
+}
+
+
 
 
 
@@ -425,6 +438,7 @@ body.modal-background{
 	.container-edit{
 		width: 70%;
 	}
+
 }
 @media screen and (max-width: 768px) {
 	.panel-experience{
@@ -444,7 +458,7 @@ body.modal-background{
 		visibility: hidden;
 	}
 }
-// show toggle button menu below 800px
+// show toggle button menu
 @media screen and (max-width: 1000px) {
     .navbar-header {
         float: none;
@@ -480,6 +494,20 @@ body.modal-background{
     .collapse.in{
   		display:block !important;
 	}
+
+	// personal travel records become two columns 
+	// on narrower screens (whole width) < 1000 px
+	.container-country-travel-record-tab{
+		margin: 10px;
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		column-count: 2;
+
+		-webkit-column-gap: 20px;
+		-moz-column-gap: 20px;
+		column-gap: 20px;
+	}
+
 }
 
 
@@ -516,6 +544,7 @@ body.modal-background{
 .avatar-friend-list{		
 		img{
 			width: 70px;
+			height: 70px;
 			border-radius: 100%;
 		}
 }

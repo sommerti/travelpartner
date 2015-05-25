@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 	# root routes
 	authenticated :user do
-		root to: "welcome#how_it_works", as: :authenticated_root
+		root to: 'users#travel_records', as: :authenticated_root
 	end
-	root to: "countries#index"
+	root to: "welcome#index"
 
 	# standalone routes
 	get "how-it-works", to: "welcome#how_it_works"
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 			post "create_update_country_travel_record", to: "country_travel_records#create_update"
 			get "follow"
 	    	get "unfollow"
+	    	get "my_connections"
 		end
 	end
 

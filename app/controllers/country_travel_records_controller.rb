@@ -17,8 +17,8 @@ class CountryTravelRecordsController < ApplicationController
       @country_travel_record.travel_status = @travel_status
 
       if @country_travel_record.save 
-        flash[:notice] = "You've marked '#{@country.country_name}' as 'wanna visit'." if @travel_status == "wannavisit"
-        flash[:notice] = "You've marked '#{@country.country_name}' as 'have been'." if @travel_status == "havebeen"
+        flash[:notice] = "You've marked '#{@country.country_name}' as 'I wanna visit!'" if @travel_status == "wannavisit"
+        flash[:notice] = "You've marked '#{@country.country_name}' as 'I've been there!" if @travel_status == "havebeen"
       else
         flash[:alert] = "Country not added."
       end
@@ -30,8 +30,8 @@ class CountryTravelRecordsController < ApplicationController
       @country_travel_record.travel_status = @travel_status
 
       if @country_travel_record.save 
-        flash[:notice] = "You've updated '#{@country.country_name}' as 'wanna visit'." if @travel_status == "wannavisit"
-        flash[:notice] = "You've updated '#{@country.country_name}' as 'have been'." if @travel_status == "havebeen"
+        flash[:notice] = "You've updated '#{@country.country_name}' as 'I wanna visit!'." if @travel_status == "wannavisit"
+        flash[:notice] = "You've updated '#{@country.country_name}' as 'I've been there!'." if @travel_status == "havebeen"
       else
         flash[:alert] = "Country not added."
       end

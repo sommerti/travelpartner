@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action :set_user, only: [:show, :edit, :update, :travel_records, :match, :big_map, :follow, :unfollow]
+  before_action :set_user, only: [:show, :edit, :update, :match, :big_map, :follow, :unfollow]
   before_action :format_params, only: [:update]
 
   def show
@@ -31,6 +31,8 @@ class UsersController < ApplicationController
   end
 
   def travel_records
+    @user = current_user
+
     @countries = Country.all
     @countries_in_asia = Country.in_asia
     @countries_in_europe = Country.in_europe
@@ -73,20 +75,19 @@ class UsersController < ApplicationController
   end
 
   def follow
-    authorize! :follow, @user
-
-
     current_user.follow(@user)
     flash[:notice] = "Following #{@user.fullname} now."
     redirect_to @user
   end
 
   def unfollow
-    authorize! :unfollow, @user
-
     current_user.stop_following(@user)
     flash[:alert] = "Stopped following #{@user.fullname}."
     redirect_to @user
+  end
+
+  def my_connections
+    @user = current_user
   end
 
   private

@@ -14,14 +14,6 @@ class Ability
         u == user
       end
 
-      can :follow, User do |u|
-        u == user
-      end
-
-      can :unfollow, User do |u|
-        u == user
-      end
-
     end
 
   end

@@ -1,0 +1,30 @@
+<h1>
+  My Connections
+  <a href="#", class="btn btn-primary">Invite Friends</a>
+</h1>
+<div class="row">
+  <div class="col-md-6">
+    
+    <div class="panel panel-follow">
+      <p><strong>I'm followed by:</strong></p> 
+      <% @user.followers.each do |follower| %>
+        <%= render partial: "users/friend_avatar", locals: { user: follower} %>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    
+    <div class="panel panel-follow">
+      <p><strong>I'm following:</strong></p> 
+      <% @user.all_following.each do |following| %>
+        <%= render partial: "users/friend_avatar", locals: { user: following} %>
+      <% end %>
+    </div>
+
+  </div>
+
+
+</div>
+
+
