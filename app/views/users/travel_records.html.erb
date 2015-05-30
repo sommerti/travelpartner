@@ -1,7 +1,7 @@
 <h1>Manage Travel Records</h1>
 
 <div class="row">
-	<div class="col-md-7 smaller-gutter">	
+	<div class="col-md-6 smaller-gutter">	
 		<!-- panel showing countries grouped by continents -->
 		<div class="panel panel-success panel-countries">
 			<h4>Below are all the countries in the world. You can mark them as "I wanna visit / I've been there", or find out more about them.</h4>
@@ -14,9 +14,9 @@
 			
 			<%= render "continent_tabs" %>
 		</div>
-	</div>
+	</div> <!-- /col -->
 
-	<div class="col-md-4 smaller-gutter">
+	<div class="col-md-6 smaller-gutter">
 		<div class="panel panel-default panel-travel-map-and-list">
 			<!-- google map, legend, view big map button -->
 			<div id="map_countries"></div>
@@ -28,15 +28,7 @@
 
 			<div class="container-country-travel-lists"><%= render "travel_list_tabs" %></div>
 		</div>
-	</div>
-
-	<div class="col-md-1 smaller-gutter">
-		<div class="panel panel-friend-avatars">
-			<% current_user.all_following.each do |following| %>
-				<%= render partial: "users/friend_avatar", locals: { user: following }  %>
-			<% end %>
-		</div>
-	</div>
+	</div> <!-- /col -->
 
 </div>
 
