@@ -1,16 +1,9 @@
-<div class="row">
-  <div class="col-md-4">
-	<%= record.country.country_name %>
-  </div>
-
-  <div class="col-md-8">
-	<% if record.user == current_user %>
-
-  	<%= link_to ("<i class='fa fa-check'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: record.country.id, travel_status: "havebeen"), class: "btn btn-success btn-xs round", method: :post, remote: true %>&nbsp;
-
-  	<%= link_to ("<i class='fa fa-times'></i>").html_safe, country_travel_record_path(record), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-xs round", remote: true %>
-
-  	<% end %>
-  </div>
+<div class="country-block">
+	<p class="inline"><%= record.country.country_name %></p>
+	<p class="country-buttons inline">
+		<% if record.user == current_user %>
+		  	<%= link_to "I've been there!", create_update_country_travel_record_user_path(id: current_user.id, country_id: record.country.id, travel_status: "havebeen"), class: "btn btn-success btn-xs", method: :post, remote: true %>&nbsp;
+		  	<%= link_to "Remove", country_travel_record_path(record), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-warning btn-xs", remote: true %>
+	  	<% end %>
+	</p>
 </div>
-<br>

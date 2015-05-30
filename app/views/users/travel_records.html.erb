@@ -1,31 +1,23 @@
 <h1>Edit Travel Records</h1>
 
 <div class="row">
-	<div class="col-md-6 smaller-gutter">	
+	<div class="col-md-5 smaller-gutter">	
 		<!-- panel showing countries grouped by continents -->
-		<div class="panel panel-success panel-countries">
-			<h4>Below are all the countries in the world. You can mark them as "I wanna visit / I've been there", or find out more about them.</h4>
-			<p>
-				<div class="inline"><button class="btn btn-danger btn-xs round"><i class="fa fa-heart"></i></button> "I wanna visit!"</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div class="inline"><button class="btn btn-success btn-xs round"><i class="fa fa-check"></i></button> "I've been there!"</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div class="inline"><button class="btn btn-info btn-xs round">&nbsp;<i class="fa fa-info"></i>&nbsp;</button> Show Country Info </div>
-			</p>
-			<br>
-			
+		<div id="country-tabs" class="panel panel-success panel-countries">			
 			<%= render "continent_tabs" %>
 		</div>
 	</div> <!-- /col -->
 
-	<div id="travel-records" class="col-md-6 smaller-gutter">
+	<div id="travel-records" class="col-md-7 smaller-gutter">
 		
 		<div class="panel panel-map">
 			<!-- google map, legend, view big map button -->
 			<div id="map_countries"></div>
-			<div class="container-map-legend">
+			<div class="container-map-legend aligned-center">
 				<div class="inline"><%= image_tag("heart.png") %> countries I wanna visit </div>&nbsp;&nbsp;
 				<div class="inline"><%= image_tag("check.png") %> countries I've been to </div> 
 			</div>
-			<div class="aligned-center"><%= link_to "View Big Map", big_map_user_path(current_user), class: "btn btn-primary btn-xs" %></div>
+			<!-- <div class="aligned-center"><%#= link_to "View Big Map", big_map_user_path(current_user), class: "btn btn-primary btn-xs" %></div> -->
 
 		</div> <!-- /map panel -->
 		
@@ -36,7 +28,7 @@
 			<div class="col-md-6 smaller-gutter">
 				<div class="panel panel-travel-record-wannavisit">	
 					<h4>Countries I wanna visit:</h4>
-					<div id="havebeen">
+					<div id="wannavisit">
 				        <% @user.country_travel_records_wannavisit.each do |record| %>
 				          <%= render partial: "countries_wannavisit", locals: { record: record } %>
 				        <% end %>

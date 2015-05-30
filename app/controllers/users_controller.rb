@@ -33,20 +33,19 @@ class UsersController < ApplicationController
   def travel_records
     @user = current_user
 
-    @countries = Country.all
-    @countries_in_asia = Country.in_asia
-    @countries_in_europe = Country.in_europe
-    @countries_in_northamerica = Country.in_northamerica
-    @countries_in_southamerica = Country.in_southamerica
-    @countries_in_africa = Country.in_africa
-    @countries_in_oceania = Country.in_oceania
-    @countries_in_antarctica = Country.in_antarctica
+    @countries = Country.all.order("country_name ASC")
+    @countries_in_asia = Country.in_asia.order("country_name ASC")
+    @countries_in_europe = Country.in_europe.order("country_name ASC")
+    @countries_in_northamerica = Country.in_northamerica.order("country_name ASC")
+    @countries_in_southamerica = Country.in_southamerica.order("country_name ASC")
+    @countries_in_africa = Country.in_africa.order("country_name ASC")
+    @countries_in_oceania = Country.in_oceania.order("country_name ASC")
+    @countries_in_antarctica = Country.in_antarctica.order("country_name ASC")
 
-    @countries_search_results = Country.text_search(params[:search])
+    @countries_search_results = Country.text_search(params[:search]).order("country_name ASC")
 
     # display country travel records on map
     @hash_country_travel_records = build_country_travel_records_hash(@user)
-
 
   end
 

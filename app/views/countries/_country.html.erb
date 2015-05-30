@@ -1,19 +1,23 @@
-<div class="row">
-  <div class="col-md-4">
-	 <%= country.country_name %> 
-  </div>
-	
-  <div class="col-md-8">
-    <% if user_signed_in? %>
+<div class="country-block">
+  <% if current_user.have_added_country(country) %>
     
-    	<%= link_to ("<i class='fa fa-heart'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-danger btn-xs round", method: :post, remote: true %>&nbsp;
-    	<%= link_to ("<i class='fa fa-check'></i>").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), class: "btn btn-success btn-xs round", method: :post, remote: true %>&nbsp;
-        <button id="wiki_<%= country.id %>" class="btn btn-info btn-xs round">&nbsp;<i class="fa fa-info"></i>&nbsp;</button>
+    <p class="inline faded"><%= country.country_name %></p>
+    <p class="country-buttons faded">(already added to your travel record)</p>
 
-    <% end %>
-  </div>
+  <% else %>
+
+    <p class="inline"><%= country.country_name %></p>
+    <p class="country-buttons inline">
+      <% if user_signed_in? %>
+
+      	<%= link_to ("I wanna visit").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "wannavisit"), class: "btn btn-danger btn-xs", method: :post, remote: true %>&nbsp;
+      	<%= link_to ("I've been there").html_safe, create_update_country_travel_record_user_path(id: current_user.id, country_id: country.id, travel_status: "havebeen"), class: "btn btn-success btn-xs", method: :post, remote: true %>&nbsp;
+          <button id="wiki_<%= country.id %>" class="btn btn-info btn-xs">More Info</button>
+      <% end %>
+    </p>
+
+  <% end %>
 </div>
-<br>
 
 <!-- modal script -->
 <script>

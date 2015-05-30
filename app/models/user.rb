@@ -90,11 +90,19 @@ class User < ActiveRecord::Base
 	end
 
 	def country_travel_records_wannavisit
-		CountryTravelRecord.where(user_id: self.id, travel_status: "wannavisit")
+		CountryTravelRecord.where(user_id: self.id, travel_status: "wannavisit").order("country_id ASC")
 	end
 
 	def country_travel_records_havebeen
-		CountryTravelRecord.where(user_id: self.id, travel_status: "havebeen")
+		CountryTravelRecord.where(user_id: self.id, travel_status: "havebeen").order("country_id ASC")
 	end
 
+	def have_added_country(country)
+		have_added =  false
+		CountryTravelRecord.where(user_id: self.id).each do |record|
+			have_added = true if record.country_id == country.id
+		end
+
+		have_added
+	end
 end

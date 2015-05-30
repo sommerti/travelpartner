@@ -1,20 +1,63 @@
 <div role="tabpanel">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation"><a href="#search" class="active" aria-controls="search" role="tab" data-toggle="tab">Search</a></li>
-    <li role="presentation"><a href="#asia" aria-controls="asia" role="tab" data-toggle="tab">Asia</a></li>    
+    <li role="presentation"><a href="#asia" class="active" aria-controls="asia" role="tab" data-toggle="tab">Asia</a></li>    
     <li role="presentation"><a href="#europe" aria-controls="europe" role="tab" data-toggle="tab">Europe</a></li>
     <li role="presentation"><a href="#northamerica" aria-controls="northamerica" role="tab" data-toggle="tab">N. America</a></li>
     <li role="presentation"><a href="#southamerica" aria-controls="southamerica" role="tab" data-toggle="tab">S. America</a></li>
     <li role="presentation"><a href="#africa" aria-controls="africa" role="tab" data-toggle="tab">Africa</a></li>
     <li role="presentation"><a href="#oceania" aria-controls="oceania" role="tab" data-toggle="tab">Oceania</a></li>
     <li role="presentation"><a href="#antarctica" aria-controls="antarctica" role="tab" data-toggle="tab">Antarctica</a></li>
+    <!-- <li role="presentation"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">Search</a></li> -->
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
 
-    <div role="tabpanel" class="tab-pane fade in active" id="search">
+    <div role="tabpanel" class="tab-pane active" id="asia">
+      <div class="container-country-tab">
+        <%= render @countries_in_asia %>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="europe">
+      <div class="container-country-tab">
+        <%= render @countries_in_europe %>
+      </div>      
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="northamerica">
+      <div class="container-country-tab">
+        <%= render @countries_in_northamerica %>
+      </div>      
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="southamerica">    
+      <div class="container-country-tab">
+        <%= render @countries_in_southamerica %>
+      </div>        
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="africa">
+      <div class="container-country-tab">
+        <%= render @countries_in_africa %>
+      </div>        
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="oceania">
+      <div class="container-country-tab">
+        <%= render @countries_in_oceania %>
+      </div>      
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="antarctica">
+      <div class="container-country-tab">
+        <%= render @countries_in_antarctica %>
+      </div>
+    </div>
+
+
+    <div role="tabpanel" class="tab-pane" id="search">
       <div class="search-country">     
         <p>Search for a country:</p>
         <%= form_tag travel_records_user_path(current_user), class: "form-inline", method: :get do %>
@@ -24,50 +67,12 @@
       </div>
 
       <% if !params[:search].blank? %>
-        <%= render @countries_search_results %>
+        <% if @countries_search_results.blank? %>
+          <p>No such country.</p>
+        <% else %>
+          <%= render @countries_search_results %>
+        <% end %>
       <% end %>     
-    </div>
-
-    <div role="tabpanel" class="tab-pane fade" id="asia">
-      <div class="container-country-tab">
-        <%= render @countries_in_asia %>
-      </div>
-    </div>
-
-    <div role="tabpanel" class="tab-pane fade" id="europe">
-      <div class="container-country-tab">
-        <%= render @countries_in_europe %>
-      </div>      
-    </div>
-    
-    <div role="tabpanel" class="tab-pane fade" id="northamerica">
-      <div class="container-country-tab">
-        <%= render @countries_in_northamerica %>
-      </div>      
-    </div>
-    
-    <div role="tabpanel" class="tab-pane fade" id="southamerica">    
-      <div class="container-country-tab">
-        <%= render @countries_in_southamerica %>
-      </div>        
-    </div>
-
-    <div role="tabpanel" class="tab-pane fade" id="africa">
-      <div class="container-country-tab">
-        <%= render @countries_in_africa %>
-      </div>        
-    </div>
-    
-    <div role="tabpanel" class="tab-pane fade" id="oceania">
-      <div class="container-country-tab">
-        <%= render @countries_in_oceania %>
-      </div>      
-    </div>
-    
-    <div role="tabpanel" class="tab-pane fade" id="antarctica">
-      <div class="container-country-tab">
-        <%= render @countries_in_antarctica %>
-      </div>
     </div>
 
   </div>
