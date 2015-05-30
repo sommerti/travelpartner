@@ -1,4 +1,4 @@
-<h1>Manage Travel Records</h1>
+<h1>Edit Travel Records</h1>
 
 <div class="row">
 	<div class="col-md-6 smaller-gutter">	
@@ -16,8 +16,9 @@
 		</div>
 	</div> <!-- /col -->
 
-	<div class="col-md-6 smaller-gutter">
-		<div class="panel panel-default panel-travel-map-and-list">
+	<div id="travel-records" class="col-md-6 smaller-gutter">
+		
+		<div class="panel panel-map">
 			<!-- google map, legend, view big map button -->
 			<div id="map_countries"></div>
 			<div class="container-map-legend">
@@ -26,8 +27,36 @@
 			</div>
 			<div class="aligned-center"><%= link_to "View Big Map", big_map_user_path(current_user), class: "btn btn-primary btn-xs" %></div>
 
-			<div class="container-country-travel-lists"><%= render "travel_list_tabs" %></div>
-		</div>
+		</div> <!-- /map panel -->
+		
+
+		<div class="row">
+
+			<!-- countries i wanna visit -->
+			<div class="col-md-6 smaller-gutter">
+				<div class="panel panel-travel-record-wannavisit">	
+					<h4>Countries I wanna visit:</h4>
+					<div id="havebeen">
+				        <% @user.country_travel_records_wannavisit.each do |record| %>
+				          <%= render partial: "countries_wannavisit", locals: { record: record } %>
+				        <% end %>
+				    </div>
+				</div>
+			</div>
+
+			<!-- countries i've been to -->
+			<div class="col-md-6 smaller-gutter">
+				<div class="panel panel-travel-record-havebeen">	
+					<h4>Countries I have been to:</h4>
+					<div id="havebeen">
+				        <% @user.country_travel_records_havebeen.each do |record| %>
+				          <%= render partial: "countries_havebeen", locals: { record: record } %>
+				        <% end %>
+			    	</div>
+				</div>
+			</div>
+
+		</div> <!-- /row -->
 	</div> <!-- /col -->
 
 </div>
@@ -75,8 +104,6 @@ handler.buildMap({ provider: {}, internal: {id: 'map_countries'}}, function(){
 </script>
 
 
-
-
 <!-- current tab stays active after refreshing -->
 <script>
 $(document).ready(function() {
@@ -92,6 +119,4 @@ $(window).on('popstate', function() {
     $('a[href=' + anchor + ']').tab('show');
 });
 </script>
-
-
 

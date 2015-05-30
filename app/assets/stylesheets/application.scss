@@ -395,7 +395,7 @@ body.modal-background{
 
 .panel-map{
 	margin: 0;
-	padding: 0;	
+	padding: 0 0 20px 0;	
 }
 .panel-search{
 	padding: 20px;
@@ -408,10 +408,6 @@ body.modal-background{
 	// overflow-y: scroll;
 
 }
-.panel-map-and-list{
-	padding: 0;
-
-}
 .panel-friend-avatars{
 	padding: 10px;
 
@@ -422,6 +418,22 @@ body.modal-background{
 .panel-follow{
 	text-align: left;
 	padding: 20px;
+}
+.panel-travel-record-wannavisit{
+	margin: 10px 0 10px 10px;
+	padding: 10px 20px 20px 20px;
+
+	height: 500px;
+	width: 95%;
+	overflow-y: scroll;
+}
+.panel-travel-record-havebeen{
+	margin: 10px 10px 10px 0;
+	padding: 10px 20px 20px 20px;
+
+	height: 500px;
+	width: 95%;
+	overflow-y: scroll;
 }
 
 
